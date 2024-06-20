@@ -1,10 +1,12 @@
 import { createWebHistory, createRouter } from 'vue-router';
+import UserDataView from "../views/UserDataView.vue";
 
 const routes = [
     {
-        path: '/',
+        path: '/client/create',
         alias: '/',
-        name: '',
+        name: 'home',
+        component: UserDataView,
     },
 ];
 

@@ -1,13 +1,14 @@
 <script setup>
-
 </script>
 
 <template>
   <div class="user-data">
-    <input type="text" id="small-input" class="user-data__input mb-4" placeholder="Имя">
-    <input type="text" id="small-input" class="user-data__input mb-4" placeholder="Фамилия">
-    <input type="email" id="small-input" class="user-data__input mb-4" placeholder="Почта">
-    <input type="text" id="small-input" class="user-data__input mb-4" placeholder="Номер билета">
+    <div class="input-wrapper">
+      <input type="text" class="user-data__input mb-4" placeholder="Имя">
+      <input type="text" class="user-data__input mb-4" placeholder="Фамилия">
+      <input type="email" class="user-data__input mb-4" placeholder="Почта">
+      <input type="text" class="user-data__input mb-4" placeholder="Номер билета">
+    </div>
     <div class="button-wrapper">
       <slot name="user-data-buttons" />
     </div>
@@ -19,11 +20,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+}
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 .user-data__input {
   @apply block w-1/2 p-2 text-gray-900 rounded-xl bg-gray-50 text-xs;
 }
 .button-wrapper {
-  @apply flex flex-row justify-end gap-4 ml-44;
+  display: flex;
+  justify-content: flex-end;
+  width: 50%;
+  margin-top: .75rem;
 }
 </style>
