@@ -1,13 +1,53 @@
 <script setup>
+import { defineProps } from 'vue';
+
+defineProps({
+  firstName: {
+    type: String,
+    required: true,
+  },
+  lastName: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
+  ticketNumber: {
+    type: String,
+    required: true,
+  },
+});
 </script>
 
 <template>
   <div class="user-data">
     <div class="input-wrapper">
-      <input type="text" class="user-data__input mb-4" placeholder="Имя">
-      <input type="text" class="user-data__input mb-4" placeholder="Фамилия">
-      <input type="email" class="user-data__input mb-4" placeholder="Почта">
-      <input type="text" class="user-data__input mb-4" placeholder="Номер билета">
+      <input
+          v-model="firstName"
+          type="text"
+          class="user-data__input mb-4"
+          placeholder="Имя"
+      />
+      <input
+          v-model="lastName"
+          type="text"
+          class="user-data__input mb-4"
+          placeholder="Фамилия"
+      />
+      <input
+          v-model="email"
+          type="email"
+          class="user-data__input mb-4"
+          placeholder="Почта"
+      />
+      <input
+          v-model="ticketNumber"
+          type="text"
+          class="user-data__input mb-4"
+          placeholder="Номер билета"
+      />
     </div>
     <div class="button-wrapper">
       <slot name="user-data-buttons" />
