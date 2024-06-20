@@ -1,6 +1,7 @@
 <script setup>
 import { clientCreate } from "../api/client.js";
 import { ref } from "vue";
+import router from "../router/index.js";
 
 const firstName = ref("");
 const lastName = ref("");
@@ -17,6 +18,7 @@ const nextStep = () => {
 
   clientCreate(payload)
       .then((res) => {
+        router.push({ name: "hasTest" })
         console.log('Данные успешно отправлены: ', res);
       })
       .catch((e) => {

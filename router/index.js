@@ -8,6 +8,12 @@ const routes = [
         name: 'home',
         component: UserDataView,
     },
+    {
+        path: '/client/has-test',
+        alias: '/client/has-test',
+        name: 'hasTest',
+        component: () => import('../views/HasTestView.vue'),
+    },
 ];
 
 const router = createRouter({
