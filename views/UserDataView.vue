@@ -8,6 +8,8 @@ const lastName = ref("");
 const email = ref("");
 const ticketNumber = ref("");
 
+const userId = ref(null);
+
 const nextStep = () => {
   const payload = {
     firstName: firstName.value,
@@ -18,8 +20,11 @@ const nextStep = () => {
 
   clientCreate(payload)
       .then((res) => {
+        userId.value = res.data.user.id;
+        localStorage.setItem('userId', userId.value);
+        console.log(userId.value);
         router.push({ name: "hasTest" })
-        console.log('Данные успешно отправлены: ', res);
+        console.log('Данные успешно отправлены: ', res.data.user);
       })
       .catch((e) => {
         console.error("Ошибка при отправке данных:", e);

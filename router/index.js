@@ -14,6 +14,12 @@ const routes = [
         name: 'hasTest',
         component: () => import('../views/HasTestView.vue'),
     },
+    {
+        path: '/client/success',
+        alias: '/client/success',
+        name: 'success',
+        component: () => import('../views/SuccessView.vue'),
+    },
 ];
 
 const router = createRouter({
