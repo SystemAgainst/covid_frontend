@@ -5,21 +5,23 @@ import {clientCreate} from "../api/client.js";
 import router from "../router/index.js";
 
 const userStore = useUserStore();
-const { firstName, lastName, email, ticketNumber, userId } = storeToRefs(userStore);
+const { firstName, lastName, email, ticketNumber, userId, passportData } = storeToRefs(userStore);
 
 const nextStep = () => {
   const payload = {
     firstName: firstName.value,
     lastName: lastName.value,
     email: email.value,
-    ticketNumber: ticketNumber.value
+    ticketNumber: ticketNumber.value,
+    passportData: passportData.value,
+
   };
 
   clientCreate(payload)
       .then((res) => {
         userId.value = res.data.user.id;
         userStore.setUserData({ ...payload, id: userId });
-        router.push({ name: "hasTest" })
+        router.push('/client/waiting')
         console.log('Данные успешно отправлены: ', res.data.user);
       })
       .catch((e) => {
@@ -63,6 +65,15 @@ const nextStep = () => {
         <span>Ваш билет:</span>
         <input
             v-model="ticketNumber"
+            type="text"
+            class="user-data__input mb-4"
+            readonly
+        />
+      </div>
+      <div class="flex items-baseline gap-4">
+        <span>Ваши паспортные данные:</span>
+        <input
+            v-model="passportData"
             type="text"
             class="user-data__input mb-4"
             readonly

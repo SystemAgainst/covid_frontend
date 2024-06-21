@@ -6,6 +6,7 @@ const LAST_NAME = 'lastName'
 const EMAIL = 'email';
 const TICKET_NUMBER = 'ticketNumber';
 const USER_ID = 'userId';
+const PASSPORT_DATA = 'passportData'
 
 export const useUserStore = defineStore('user', {
     state: () => ({
@@ -13,13 +14,9 @@ export const useUserStore = defineStore('user', {
         lastName: localStorage.getItem(LAST_NAME) || '',
         email: localStorage.getItem(EMAIL) || '',
         ticketNumber: localStorage.getItem(TICKET_NUMBER) || '',
+        passportData: localStorage.getItem(PASSPORT_DATA) || '',
         userId: localStorage.getItem(USER_ID) || '',
     }),
-    getters: {
-        getFirstName() {
-            return this.firstName;
-        },
-    },
     actions: {
         setUserData(payload) {
             this.firstName = payload.firstName;
@@ -33,6 +30,9 @@ export const useUserStore = defineStore('user', {
 
             this.ticketNumber = payload.ticketNumber;
             localStorage.setItem(TICKET_NUMBER, this.ticketNumber);
+
+            this.passportData = payload.passportData;
+            localStorage.setItem(PASSPORT_DATA, this.passportData);
 
             this.userId = +payload.id;
             localStorage.setItem(USER_ID, this.userId);

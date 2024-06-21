@@ -9,6 +9,7 @@ const firstName = ref("");
 const lastName = ref("");
 const email = ref("");
 const ticketNumber = ref("");
+const passportData = ref("");
 
 const userId = ref(null);
 
@@ -17,7 +18,8 @@ const nextStep = () => {
     firstName: firstName.value,
     lastName: lastName.value,
     email: email.value,
-    ticketNumber: ticketNumber.value
+    ticketNumber: ticketNumber.value,
+    passportData: passportData.value
   };
 
   userStore.setUserData({ ...payload, id: userId });
@@ -52,6 +54,12 @@ const nextStep = () => {
           type="text"
           class="user-data__input mb-4"
           placeholder="Номер билета"
+      />
+      <input
+          v-model="passportData"
+          type="text"
+          class="user-data__input mb-4"
+          placeholder="Паспортные данные"
       />
       <div class="button-wrapper">
         <Button type="submit" label="Дальше" severity="success"/>

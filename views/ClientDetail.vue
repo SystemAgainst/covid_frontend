@@ -50,7 +50,8 @@ const updateStatus = () => {
 
   <div class="button-wrapper">
     <Button label="Обновить" severity="help" @click="updateStatus"/>
-    <Button label="Назад" severity="warning" @click="goHome"/>
+    <Button label="Назад" @click="goHome"/>
+    <Button label="Отправить на почту" severity="warn" @click="sendMail()"/>
   </div>
 </template>
 

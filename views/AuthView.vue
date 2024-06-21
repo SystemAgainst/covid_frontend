@@ -31,7 +31,7 @@ const authentication = () => {
     <form class="input-wrapper" @submit.prevent="authentication()">
       <input
           v-model="email"
-          type="text"
+          type="email"
           class="auth__input mb-4"
           placeholder="Логин админа"
       />

@@ -9,7 +9,7 @@ const goHome = () => {
 <template>
   <h2>Благодарим за уделенное время!</h2>
 
-  <div class="my-8">Ожидайте результаты теста на почте</div>
+  <div class="my-8">Ожидайте результаты теста</div>
 
   <div class="button-wrapper">
     <Button label="Вернуться домой" severity="warning" @click="goHome"/>

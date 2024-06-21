@@ -15,6 +15,7 @@ onMounted(() => {
   getAllClients()
       .then((res) => {
         clients.value = res.data.rows;
+        console.log(clients.value);
       })
       .catch((e) => console.error(e));
 })
