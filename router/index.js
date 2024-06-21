@@ -46,10 +46,9 @@ const routes = [
     },
     {
         path: '/admin/client-detail/:id',
-        alias: '/admin/client-detail',
+        alias: '/admin/client-detail/:id',
         name: 'ClientDetail',
         component: () => import('../views/ClientDetail.vue'),
-        props: true,
     },
 ];
 
