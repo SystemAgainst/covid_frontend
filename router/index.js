@@ -44,6 +44,13 @@ const routes = [
         name: 'AdminList',
         component: () => import('../views/AdminList.vue'),
     },
+    {
+        path: '/admin/client-detail/:id',
+        alias: '/admin/client-detail',
+        name: 'ClientDetail',
+        component: () => import('../views/ClientDetail.vue'),
+        props: true,
+    },
 ];
 
 const router = createRouter({
