@@ -1,18 +1,23 @@
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { getAllClients } from "../api/admin.js";
 
-const clients = ref([
-  { id: 1, name: 'Client One' },
-  { id: 2, name: 'Client Two' },
-  { id: 3, name: 'Client Three' },
-]);
+const clients = ref([]);
 
 const router = useRouter();
 
 const goToClientDetail = (id) => {
   router.push({ name: 'ClientDetail', params: { id } });
 };
+
+onMounted(() => {
+  getAllClients()
+      .then((res) => {
+        clients.value = res.data.rows;
+      })
+      .catch((e) => console.error(e));
+})
 </script>
 
 <template>
@@ -20,7 +25,8 @@ const goToClientDetail = (id) => {
   <div class="client-list">
     <ul>
       <li v-for="client in clients" :key="client.id" @click="goToClientDetail(client.id)">
-        {{ client.name }}
+        {{ client.firstName }} {{ client.lastName }}.
+        <span>Статус: {{ client.status }}</span>
       </li>
     </ul>
   </div>
