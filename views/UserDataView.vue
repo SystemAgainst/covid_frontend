@@ -2,6 +2,9 @@
 import { clientCreate } from "../api/client.js";
 import { ref } from "vue";
 import router from "../router/index.js";
+import { useUserStore } from "../store/userStore.js";
+
+const userStore = useUserStore();
 
 const firstName = ref("");
 const lastName = ref("");
@@ -21,8 +24,7 @@ const nextStep = () => {
   clientCreate(payload)
       .then((res) => {
         userId.value = res.data.user.id;
-        localStorage.setItem('userId', userId.value);
-        console.log(userId.value);
+        userStore.setUserData({ ...payload, id: userId });
         router.push({ name: "hasTest" })
         console.log('Данные успешно отправлены: ', res.data.user);
       })
