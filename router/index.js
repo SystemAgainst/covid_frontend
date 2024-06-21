@@ -15,6 +15,18 @@ const routes = [
         component: () => import('../views/HasTestView.vue'),
     },
     {
+        path: '/client/create-request',
+        alias: '/client/create-request',
+        name: 'createRequest',
+        component: () => import('../views/RequestView.vue'),
+    },
+    {
+        path: '/client/waiting',
+        alias: '/client/waiting',
+        name: 'waiting',
+        component: () => import('../views/WaitingView.vue'),
+    },
+    {
         path: '/client/success',
         alias: '/client/success',
         name: 'success',

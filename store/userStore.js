@@ -13,8 +13,13 @@ export const useUserStore = defineStore('user', {
         lastName: localStorage.getItem(LAST_NAME) || '',
         email: localStorage.getItem(EMAIL) || '',
         ticketNumber: localStorage.getItem(TICKET_NUMBER) || '',
-        userId: localStorage.getItem(USER_ID) || null,
+        userId: localStorage.getItem(USER_ID) || '',
     }),
+    getters: {
+        getFirstName() {
+            return this.firstName;
+        },
+    },
     actions: {
         setUserData(payload) {
             this.firstName = payload.firstName;

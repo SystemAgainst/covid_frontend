@@ -1,5 +1,4 @@
 <script setup>
-import { clientCreate } from "../api/client.js";
 import { ref } from "vue";
 import router from "../router/index.js";
 import { useUserStore } from "../store/userStore.js";
@@ -21,16 +20,8 @@ const nextStep = () => {
     ticketNumber: ticketNumber.value
   };
 
-  clientCreate(payload)
-      .then((res) => {
-        userId.value = res.data.user.id;
-        userStore.setUserData({ ...payload, id: userId });
-        router.push({ name: "hasTest" })
-        console.log('Данные успешно отправлены: ', res.data.user);
-      })
-      .catch((e) => {
-        console.error("Ошибка при отправке данных:", e);
-      });
+  userStore.setUserData({ ...payload, id: userId });
+  router.push({ name: "hasTest" })
 };
 </script>
 

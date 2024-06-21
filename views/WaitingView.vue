@@ -2,14 +2,14 @@
 import router from "../router/index.js";
 
 const goHome = () => {
-  router.push('/');
+  router.push({ name: 'home' });
 };
 </script>
 
 <template>
   <h2>Благодарим за уделенное время!</h2>
 
-  <p class="mt-8">Счастливого пути</p>
+  <div class="my-8">Ожидайте результаты теста на почте</div>
 
   <div class="button-wrapper">
     <Button label="Вернуться домой" severity="warning" @click="goHome"/>

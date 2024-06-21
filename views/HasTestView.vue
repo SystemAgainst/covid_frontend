@@ -21,7 +21,7 @@ const fileInput = ref(null);
 const userId = ref(localStorage.getItem('userId'));
 
 const goHome = () => {
-  router.push({ name: 'home' });
+  router.push({ name: 'createRequest' });
 };
 
 const triggerFileInput = () => {
