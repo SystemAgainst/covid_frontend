@@ -1,30 +1,36 @@
 // stores/userStore.js
 import { defineStore } from 'pinia';
 
+const FIRST_NAME = 'firstName';
+const LAST_NAME = 'lastName'
+const EMAIL = 'email';
+const TICKET_NUMBER = 'ticketNumber';
+const USER_ID = 'userId';
+
 export const useUserStore = defineStore('user', {
     state: () => ({
-        firstName: '',
-        lastName: '',
-        email: '',
-        ticketNumber: '',
-        userId: null,
+        firstName: localStorage.getItem(FIRST_NAME) || '',
+        lastName: localStorage.getItem(LAST_NAME) || '',
+        email: localStorage.getItem(EMAIL) || '',
+        ticketNumber: localStorage.getItem(TICKET_NUMBER) || '',
+        userId: localStorage.getItem(USER_ID) || null,
     }),
     actions: {
         setUserData(payload) {
             this.firstName = payload.firstName;
-            localStorage.setItem('firstName', this.firstName);
+            localStorage.setItem(FIRST_NAME, this.firstName);
 
             this.lastName = payload.lastName;
-            localStorage.setItem('lastName', this.lastName);
+            localStorage.setItem(LAST_NAME, this.lastName);
 
             this.email = payload.email;
-            localStorage.setItem('email', this.email);
+            localStorage.setItem(EMAIL, this.email);
 
             this.ticketNumber = payload.ticketNumber;
-            localStorage.setItem('ticketNumber', this.ticketNumber);
+            localStorage.setItem(TICKET_NUMBER, this.ticketNumber);
 
             this.userId = +payload.id;
-            localStorage.setItem('userId', this.userId);
+            localStorage.setItem(USER_ID, this.userId);
         },
     },
 });
