@@ -32,6 +32,12 @@ const routes = [
         name: 'success',
         component: () => import('../views/SuccessView.vue'),
     },
+    {
+        path: '/admin-auth',
+        alias: '/admin-auth',
+        name: 'adminAuth',
+        component: () => import('../views/AuthView.vue'),
+    },
 ];
 
 const router = createRouter({

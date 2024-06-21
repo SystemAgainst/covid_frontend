@@ -13,6 +13,7 @@ h2 {
 }
 
 ._container {
+    position: relative;
     max-width: 900px;
     min-height: 50vh;
     margin: 10rem auto 0;
