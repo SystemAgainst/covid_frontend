@@ -1,4 +1,27 @@
 <script setup>
+
+import {ref} from "vue";
+import {login} from "../api/admin.js";
+import router from "../router/index.js";
+
+const email = ref("");
+const password = ref("");
+
+const authentication = () => {
+  const payload = {
+    email: email.value,
+    password: password.value,
+  };
+
+  login(payload)
+      .then((res) => {
+        router.push({ name: "AdminList" })
+        console.log('Данные успешно отправлены: ', res.data);
+      })
+      .catch((e) => {
+        console.error("Ошибка при отправке данных:", e);
+      });
+};
 </script>
 
 <template>
@@ -7,7 +30,7 @@
 
     <form class="input-wrapper" @submit.prevent="authentication()">
       <input
-          v-model="login"
+          v-model="email"
           type="text"
           class="auth__input mb-4"
           placeholder="Логин админа"

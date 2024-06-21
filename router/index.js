@@ -38,6 +38,12 @@ const routes = [
         name: 'adminAuth',
         component: () => import('../views/AuthView.vue'),
     },
+    {
+        path: '/admin/list',
+        alias: '/admin/list',
+        name: 'AdminList',
+        component: () => import('../views/AdminList.vue'),
+    },
 ];
 
 const router = createRouter({
