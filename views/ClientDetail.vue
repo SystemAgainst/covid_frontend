@@ -2,7 +2,7 @@
 import router from "../router/index.js";
 
 const goHome = () => {
-  router.push('/');
+  router.push('/admin/list');
 };
 </script>
 
@@ -12,7 +12,7 @@ const goHome = () => {
   <p class="mt-8">Счастливого пути</p>
 
   <div class="button-wrapper">
-    <Button label="Вернуться домой" severity="warning" @click="goHome"/>
+    <Button label="Назад" severity="warning" @click="goHome"/>
   </div>
 </template>
 
