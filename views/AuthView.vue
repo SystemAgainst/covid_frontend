@@ -1,7 +1,6 @@
 <script setup>
-
-import {ref} from "vue";
-import {login} from "../api/admin.js";
+import { ref } from "vue";
+import { login } from "../api/admin.js";
 import router from "../router/index.js";
 
 const email = ref("");
@@ -14,9 +13,8 @@ const authentication = () => {
   };
 
   login(payload)
-      .then((res) => {
+      .then(() => {
         router.push({ name: "AdminList" })
-        console.log('Данные успешно отправлены: ', res.data);
       })
       .catch((e) => {
         console.error("Ошибка при отправке данных:", e);
