@@ -52,10 +52,11 @@ onMounted(() => {
   margin: 0.5rem 0;
   cursor: pointer;
   border-bottom: 1px solid #ccc;
-  transition: background-color 0.3s;
+  transition: all .5s;
 }
 
 .client-list li:hover {
+  color: #212227;
   background-color: #f0f0f0;
 }
 </style>
