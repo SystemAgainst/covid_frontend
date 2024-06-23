@@ -18,6 +18,7 @@ onMounted(() => {
   getClientById(+clientId.value)
       .then((res) => {
         client.value = res.data;
+        console.log(client.value)
       })
       .catch((e) => console.error(e));
 });
@@ -37,7 +38,7 @@ const updateStatus = () => {
 <template>
   <h2>Заявка пользователя {{ client.firstName }}</h2>
 
-  <div class="flex gap-8 w-64 m-auto mt-8">
+  <div class="client-detail__wrapper">
     <label class="mr-4" for="status">Статус:</label>
     <input
         id="status"
@@ -57,12 +58,14 @@ const updateStatus = () => {
 
 <style scoped>
 .button-wrapper {
-  margin-top: 8rem;
-  display: flex;
-  justify-content: center;
-  gap: 4rem;}
+  @apply mt-32 flex justify-center gap-16;
+}
 
 .user-data__input {
-  @apply w-48 p-1 text-gray-900 rounded bg-gray-50 text-sm ml-8;
+  @apply w-48 py-1 px-2 text-gray-900 rounded bg-gray-50 text-sm;
+}
+
+.client-detail__wrapper {
+  @apply flex items-center justify-center gap-4 w-64 m-auto;
 }
 </style>
