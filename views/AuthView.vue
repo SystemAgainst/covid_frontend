@@ -28,7 +28,7 @@ const authentication = () => {
   <h2>Войти</h2>
   <div class="auth mt-8">
 
-    <form class="input-wrapper" @submit.prevent="authentication()">
+    <form class="input-wrapper" @submit.prevent="authentication()" @keydown.enter="authentication()">
       <input
           v-model="email"
           type="email"
@@ -44,7 +44,7 @@ const authentication = () => {
 
       <div class="button-wrapper">
         <router-link to="/">
-          <Button type="submit" label="Домой" severity="info"/>
+          <Button type="button" label="Домой" severity="info"/>
         </router-link>
         <Button type="submit" label="Войти" severity="help"/>
       </div>
