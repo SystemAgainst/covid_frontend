@@ -1,7 +1,7 @@
 <script setup>
 import router from "../router/index.js";
 import {computed, onMounted, ref} from "vue";
-import {getClientById, updateStatusById} from "../api/admin.js";
+import {getClientById, sendEmail, updateStatusById} from "../api/admin.js";
 import {useRoute} from "vue-router";
 
 const goHome = () => {
@@ -18,7 +18,6 @@ onMounted(() => {
   getClientById(+clientId.value)
       .then((res) => {
         client.value = res.data;
-        console.log(client.value)
       })
       .catch((e) => console.error(e));
 });
@@ -32,6 +31,15 @@ const updateStatus = () => {
         alert("Статус успешно обновлен");
       })
       .catch((e) => console.error(e))
+};
+
+const sendEmailToUser = () => {
+  sendEmail(clientId.value, { status: status.value })
+      .then(() => {
+        updateStatus();
+        alert("Письмо отправлено клиенту на почту");
+      })
+      .catch((e) => console.error(e));
 };
 </script>
 
@@ -52,7 +60,7 @@ const updateStatus = () => {
   <div class="button-wrapper">
     <Button label="Обновить" severity="help" @click="updateStatus"/>
     <Button label="Назад" @click="goHome"/>
-    <Button label="Отправить на почту" severity="warn" @click="sendMail()"/>
+    <Button label="Отправить на почту" severity="warn" @click="sendEmailToUser()"/>
   </div>
 </template>
 
