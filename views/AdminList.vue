@@ -5,8 +5,7 @@ import { getAllClients } from "../api/admin.js";
 
 const clients = ref([]);
 const filteredClients = ref([]);
-const filter = ref('all');
-
+const filter = ref('no_test');
 const router = useRouter();
 
 const goToClientDetail = (id) => {
