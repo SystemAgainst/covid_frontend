@@ -7,6 +7,8 @@ const EMAIL = 'email';
 const TICKET_NUMBER = 'ticketNumber';
 const USER_ID = 'userId';
 const PASSPORT_DATA = 'passportData'
+const FLIGHT_TIME = 'flightTime';
+const PCR_TEST_TIME = 'pcrTestTime';
 
 export const useUserStore = defineStore('user', {
     state: () => ({
@@ -16,6 +18,8 @@ export const useUserStore = defineStore('user', {
         ticketNumber: localStorage.getItem(TICKET_NUMBER) || '',
         passportData: localStorage.getItem(PASSPORT_DATA) || '',
         userId: localStorage.getItem(USER_ID) || '',
+        flightTime: localStorage.getItem(FLIGHT_TIME) || '',
+        pcrTestTime: localStorage.getItem(PCR_TEST_TIME) || '',
     }),
     actions: {
         setUserData(payload) {
@@ -36,6 +40,12 @@ export const useUserStore = defineStore('user', {
 
             this.userId = +payload.id;
             localStorage.setItem(USER_ID, this.userId);
+
+            this.flightTime = payload.flightTime;
+            localStorage.setItem(FLIGHT_TIME, this.flightTime);
+
+            this.pcrTestTime = payload.pcrTestTime;
+            localStorage.setItem(PCR_TEST_TIME, this.pcrTestTime);
         },
     },
 });

@@ -5,7 +5,7 @@ import {clientCreate} from "../api/client.js";
 import router from "../router/index.js";
 
 const userStore = useUserStore();
-const { firstName, lastName, email, ticketNumber, userId, passportData } = storeToRefs(userStore);
+const { firstName, lastName, email, ticketNumber, userId, passportData, flightTime, pcrTestTime } = storeToRefs(userStore);
 
 const nextStep = () => {
   const payload = {
@@ -14,7 +14,8 @@ const nextStep = () => {
     email: email.value,
     ticketNumber: ticketNumber.value,
     passportData: passportData.value,
-
+    flightTime: flightTime.value,
+    pcrTestTime: pcrTestTime.value,
   };
 
   clientCreate(payload)
@@ -74,6 +75,24 @@ const nextStep = () => {
         <span>Ваши паспортные данные:</span>
         <input
             v-model="passportData"
+            type="text"
+            class="user-data__input mb-4"
+            readonly
+        />
+      </div>
+      <div class="flex items-baseline gap-4">
+        <span>Время вылета:</span>
+        <input
+            v-model="flightTime"
+            type="text"
+            class="user-data__input mb-4"
+            readonly
+        />
+      </div>
+      <div class="flex items-baseline gap-4">
+        <span>Время сдачи пцр-теста:</span>
+        <input
+            v-model="pcrTestTime"
             type="text"
             class="user-data__input mb-4"
             readonly
